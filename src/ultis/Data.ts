@@ -5,6 +5,9 @@ export interface Student{
   email: string 
   class :string
   year? : boolean 
+
+
+  
 }
 
 
