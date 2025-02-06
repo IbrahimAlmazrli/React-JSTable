@@ -75,14 +75,6 @@ setFormData({...formData, [e.target.name]:e.target.value})
              name="class" 
              variant="outlined" />
 
-            <TextField 
-            value={formData.year}
-            onChange={handleChaned} 
-            id="outlined-basic"
-             label="Year" 
-             name="year" 
-             variant="outlined" />
-
            <Button onClick={handlSubmit} variant="contained">Submit</Button>
            </Paper>
 

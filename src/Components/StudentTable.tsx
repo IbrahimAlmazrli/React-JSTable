@@ -25,17 +25,8 @@ export const StudentTable =({students}: Props ) =>{
 
   }, [students]); 
 
-  const studentsWithscholaeship = useMemo(() => {
-    return students.map((student) => {
-      let result = false; 
-      for(let i =0 ; i <= 100000000000; i++){
-        result = Math.random() > 0.5; 
-      }
 
-      return{...student, eligibale: result};
-
-    });
-  }, []) 
+ 
 
   return(
     
@@ -43,7 +34,7 @@ export const StudentTable =({students}: Props ) =>{
       <Table size="small" sx={{border: 2 , width:400}} >
         <TableHead>
           <TableRow>
-            <TableCell>Full Name</TableCell>
+            <TableCell>FullName</TableCell>
             <TableCell sx={{color: 'blue'}}>Age</TableCell>
             <TableCell>Email</TableCell>
             <TableCell>Class</TableCell>
@@ -52,14 +43,13 @@ export const StudentTable =({students}: Props ) =>{
           </TableRow>
         </TableHead>
         <TableBody>
-         {studentsWithscholaeship.map((item) => {
+         {students.map((item) => {
           return(
             <tr>
             <TableCell>{item.fullname}</TableCell>
             <TableCell>{item.age}</TableCell>
             <TableCell>{item.email}</TableCell>
             <TableCell>{item.class}</TableCell>
-            <TableCell>{item.eligibale ? "Yes":"NO" }</TableCell>
           </tr>
           )
 

@@ -4,7 +4,7 @@ export interface Student{
   age: string 
   email: string 
   class :string
-  year? : boolean 
+
 
 
   
