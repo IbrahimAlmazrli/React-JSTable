@@ -1,57 +1,90 @@
 import { Button, Paper, TextField } from "@mui/material"
-import { ChangeEvent, Dispatch, SetStateAction } from "react"
+import { ChangeEvent, Dispatch, SetStateAction, useEffect, useRef, useState } from "react"
 import { data, Student } from "../ultis/Data"
 
 interface Props{
     students: Student[]
     setStudent : Dispatch<SetStateAction<Student[]>>
 }
-
+ 
+const initialState = {id:99, fullname: "", age:"", email:"", class:"", year : false}
 
 export const AddStrunden=({setStudent: setStudnets, students}: Props)=>{
+
+
+    const [formData, setFormData] = useState (initialState)
    
-let formData = {id:99, name: "", age:0, email:"", class:""}
 
-    const handlNameChaned = (e: ChangeEvent<HTMLInputElement>)=>{
 
-     formData.name = e.target.value
+
+    const handleChaned = (e: ChangeEvent<HTMLInputElement>)=>{
+setFormData({...formData, [e.target.name]:e.target.value})
+
     }
       
-    const handlAgeChaned = (e: ChangeEvent<HTMLInputElement>)=>{
 
-        formData.age = parseInt(e.target.value)
-     }
-        
-    const handlEmailChaned = (e: ChangeEvent<HTMLInputElement>)=>{
-
-        formData.email = e.target.value
-     }
-        
-    const handlClassChaned = (e: ChangeEvent<HTMLInputElement>)=>{
-
-        formData.class = e.target.value
-     }
    
      const handlSubmit=()=>
-        {   
-        console.log(formData) 
+        {   0
         setStudnets([...students,formData])
-            data.push(formData)
-     }
+           setFormData(initialState)
+
+       
+     };
+     useEffect(() =>{
+        if (formData.fullname === "Admin"){
+            alert("you entered a name that will not be store in database. ")
+        }
+
+    }, [formData.fullname])
    
    
     return(
 
-
         <Paper sx={{width: 300, padding:5, marginTop: 1, gap:1, display:"flex", flexDirection:"column"}}>
-           <TextField onChange={handlNameChaned} id="outlined-basic" label="Name" name="fullName" variant="outlined" />
-           <TextField onChange={handlAgeChaned} id="outlined-basic" label="Age" name="age" variant="outlined" />    
-           <TextField onChange={handlEmailChaned} id="outlined-basic" label="Email" name="email" variant="outlined" />
-           <TextField onChange={handlClassChaned} id="outlined-basic" label="Class" name="class" variant="outlined" />
+
+           <TextField
+            value={formData.fullname} 
+            onChange={handleChaned}
+             id="outlined-basic" 
+             label="Name" 
+             name="fullname"
+              variant="outlined" />
+
+           <TextField
+             value={formData.age}
+              onChange={handleChaned} 
+              id="outlined-basic" 
+              label="Age" 
+              name="age" 
+              variant="outlined" />  
+
+           <TextField
+            value={formData.email}
+            onChange={handleChaned} 
+            id="outlined-basic" 
+            label="Email" 
+            name="email" 
+            variant="outlined" />
+
+           <TextField 
+            value={formData.class}
+            onChange={handleChaned} 
+            id="outlined-basic"
+             label="Class" 
+             name="class" 
+             variant="outlined" />
+
+            <TextField 
+            value={formData.year}
+            onChange={handleChaned} 
+            id="outlined-basic"
+             label="Year" 
+             name="year" 
+             variant="outlined" />
+
            <Button onClick={handlSubmit} variant="contained">Submit</Button>
            </Paper>
-
-
 
     )
 } 

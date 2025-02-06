@@ -13,7 +13,7 @@ function App() {
 
   return (
     <>
-      <StudentTable studnets={students}/>
+      <StudentTable students={students}/>
       <AddStrunden students={students} setStudent={setStudents}/>
     </>
   )

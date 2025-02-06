@@ -1,15 +1,16 @@
 export interface Student{
   id: number 
-  name: string 
-  age: number 
+  fullname: string 
+  age: string 
   email: string 
   class :string
+  year? : boolean 
 }
 
 
 
 
-export const data: Student[] = [{ id: 1, name:"ibra", age:20, email:"email.com" , class:"BS"},
-    { id: 1, name:"Ahamd", age:30, email:"emailIra.com" , class:"BS13"}
+export const data: Student[] = [{ id: 1, fullname:"ibra", age:"20", email:"email.com" , class:"BS"},
+    { id: 1, fullname:"Ahamd", age:"30", email:"emailIra.com" , class:"BS13"}
   ];
  
