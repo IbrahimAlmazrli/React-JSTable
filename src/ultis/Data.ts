@@ -4,7 +4,6 @@ export interface Student{
   age: number 
   email: string 
   class :string
-  year : number
 }
 
 
